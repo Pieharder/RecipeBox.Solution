@@ -8,7 +8,8 @@ namespace RecipeBox.Models
 		{
 			this.Categories = new HashSet<CategoryRecipe>();
 		}
-        public int RecipeId { get; set; }
+    public int RecipeId { get; set; }
+		public string Name { get; set; }
 		public string Description { get; set; }
 		public virtual ApplicationUser User { get; set; }
 		public ICollection<CategoryRecipe> Categories { get; }
