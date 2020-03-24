@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.Recipe
+
+<h2>Recipe Details</h2>
+<hr/>
+<h3>@Html.DisplayFor(model => model.Name)</h3>
+<p>@Html.DisplayFor(model => model.Description)</p>
+
+@if(@Model.Categories.Count == 0)
+{
+  <p>This item does not belong to any categories</p>
+}
+else
+{
+  <h4>Categories:</h4>
+  <ul>
+  @foreach(var join in Model.Categories)
+  {
+    <li>@join.Category.Name</li>
+    @using (Html.BeginForm("DeleteCategory", "Recipes"))
+    {
+      @Html.Hidden("joinId", @join.CategoryRecipeId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+}
