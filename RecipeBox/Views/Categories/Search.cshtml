@@ -17,4 +17,4 @@
   <h3>@Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId })</h3>
 }
 
-<p>@Html.ActionLink("Return to Category list", "Index")<p>
+<p>@Html.ActionLink("Return to Category list", "Index", null,  new { @class = "btn btn-primary btn-large" } )<p>

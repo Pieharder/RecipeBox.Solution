@@ -11,4 +11,4 @@
     @Html.TextBoxFor(model => model.Name)
     <input type="submit" value="Add new category" />
 }
-<p>@Html.ActionLink("Show all categories", "Index", "Categories")</p>
+<p>@Html.ActionLink("Show all categories", "Index", "Categories", null,  new { @class = "btn btn-primary btn-large" } )</p>

@@ -11,7 +11,7 @@
 {
   @foreach (Recipe recipe in Model)
   {
-    <p>@Html.ActionLink($"{recipe.Description}", "Details", new { id = recipe.RecipeId })</p> 
+    <p>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</p> 
   } 
 }
 else 
@@ -19,4 +19,4 @@ else
   <p>No recipes have been added</p>
 }
 
-<p>@Html.ActionLink("Add new Recipe", "Create")</p>
+<p>@Html.ActionLink("Add new Recipe", "Create", "Recipes", null,  new { @class = "btn btn-primary btn-large" } )</p>

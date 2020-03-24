@@ -4,9 +4,9 @@
 
 @model RecipeBox.Models.Recipe
 
-<h2>Recipe Details</h2>
+<h2>Recipe Details:</h2>
 <hr/>
-<h3>@Html.DisplayFor(model => model.Name)</h3>
+<p>@Html.DisplayFor(model => model.Name)</p>
 <p>@Html.DisplayFor(model => model.Description)</p>
 
 @if(@Model.Categories.Count == 0)

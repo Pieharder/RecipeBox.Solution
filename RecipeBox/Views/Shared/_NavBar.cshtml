@@ -10,19 +10,23 @@
         <a class="nav-link home" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link stylists" href="/Recipes">Recipes</a>
+        <a class="nav-link" href="/Recipes">Recipes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link client" href="/Categories">Categories</a>
+        <a class="nav-link" href="/Categories">Categories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link client" href="/Account/Register">Sign Up</a>
+        <a class="nav-link" href="/Account/Register">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link client" href="/Account/Login">Log in</a>
+        <a class="nav-link" href="/Account/Login">Log in</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link client" href="Account/LogOff">Sign out</a>
+        @* <a class="nav-link client" href="/Account/">Log out</a> *@
+        @using (Html.BeginForm("LogOff", "Account"))
+        {
+          <input type="submit" value="Sign Out" class="nav-link">
+        }
       </li>
       <div class="form-inline my-2 my-lg-0"></form>
       @using (Html.BeginForm("search","Categories")) 
