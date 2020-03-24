@@ -118,5 +118,13 @@ namespace RecipeBox.Controllers
       // return RedirectToAction("Index");
     }
 
+    [HttpPost]
+    public ActionResult Search(string search)
+    {
+      List<Category> model = _db.Categories.Where(category => (category.Name.Contains(search))).ToList();
+      return View(model);
+    }
+
+
   }
 }
