@@ -21,23 +21,25 @@
       <li class="nav-item">
         <a class="nav-link" href="/Account/Login">Log in</a>
       </li>
-      <li class="nav-item">
-        @* <a class="nav-link client" href="/Account/">Log out</a> *@
-        @using (Html.BeginForm("LogOff", "Account"))
-        {
-          <input type="submit" value="Sign Out" class="nav-link">
-        }
-      </li>
-      <div class="form-inline my-2 my-lg-0"></form>
-      @using (Html.BeginForm("search","Categories")) 
+      <div class="form-inline my-2 my-lg-0">
+        <form>
+          @using (Html.BeginForm("search","Categories")) 
+          {
+            @Html.TextBox("Search", null, new {@class="form-control"})
+            <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-0">
+          }
+        </form>
+      </div>
+      @if(User.Identity.IsAuthenticated)//user is signed in
       {
-        @Html.TextBox("Search", null, new {@class="form-control"})
-        @* <input type="text" name="search" class="form-control mr-sm-2"/> *@
-        <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-0">
+        <li class="nav-item navRight">
+          <p>Hello @User.Identity.Name</p>
+          @using (Html.BeginForm("LogOff", "Account"))
+          {
+            <input type="submit" value="Log Out" class= "btn btn-link link">
+          }
+        </li>
       }
-    </div>
     </ul>
-    <div class="form-inline my-2 my-md-0">
-    </div>
   </div>
 </nav>
