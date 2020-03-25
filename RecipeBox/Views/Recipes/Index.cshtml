@@ -5,18 +5,28 @@
 @using RecipeBox.Models;
 @model IEnumerable<RecipeBox.Models.Recipe>
 
-<h1>Recipes for @User.Identity.Name</h1>
+<h1 class="text-center">Recipes for @User.Identity.Name</h1>
+
+<p class="text-center">@Html.ActionLink("Add new Recipe", "Create", "Recipes", null,  new { @class = "btn btn-dark btn-large" } )</p>
 
 @if (Model.Any())
 {
-  @foreach (Recipe recipe in Model)
-  {
-    <p>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId }, new {@class = "content"})</p> 
-  } 
+  <div class="row recipes">
+    @foreach (Recipe recipe in Model)
+    {
+      <div class="col-md-4 recipeCol">
+        <div class="card card-default recipe @recipe.Color">
+            <div class="card-title text-center">
+              <h4>@recipe.Name</h4>
+            </div>
+            @Html.ActionLink("Details", "Details", new { id = recipe.RecipeId }, new {@class = "btn btn-dark btn-block"})
+        </div>
+      </div>
+    } 
+  </div>
 }
 else 
 {
   <p>No recipes have been added</p>
 }
 
-<p>@Html.ActionLink("Add new Recipe", "Create", "Recipes", null,  new { @class = "btn btn-dark btn-large" } )</p>

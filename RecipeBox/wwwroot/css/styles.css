@@ -28,3 +28,48 @@ body {
   color: #888;
   background-color: transparent;
 }
+
+.recipeCol {
+  padding: 2rem;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 2rem;
+}
+
+.recipe p {
+  margin: 0;
+}
+
+.Red {
+  background-color: red;
+}
+
+.Blue {
+  background-color: blue;
+}
+
+.Purple {
+  background-color: purple;
+}
+
+.Yellow {
+  background-color: yellow;
+}
+
+.Orange {
+  background-color: orange;
+}
+
+.Green {
+  background-color: green;
+}
+
+.Brown {
+  background-color: brown;
+}

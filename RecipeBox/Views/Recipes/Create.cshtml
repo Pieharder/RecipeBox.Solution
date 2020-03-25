@@ -1,6 +1,52 @@
 @{
   Layout = "_Layout";
 }
+
+@{
+   List<SelectListItem> listItems= new List<SelectListItem>();
+   listItems.Add(new SelectListItem
+        {
+          Text = "Red",
+          Value = "Red"
+        });
+   listItems.Add(new SelectListItem
+        {
+            Text = "White",
+            Value = "White",
+            Selected = true
+        });
+   listItems.Add(new SelectListItem
+        {
+            Text = "Blue",
+            Value = "Blue"
+        });
+    listItems.Add(new SelectListItem
+        {
+            Text = "Green",
+            Value = "Green"
+        });
+    listItems.Add(new SelectListItem
+        {
+            Text = "Yellow",
+            Value = "Yellow"
+        });
+    listItems.Add(new SelectListItem
+        {
+            Text = "Purple",
+            Value = "Purple"
+        });
+    listItems.Add(new SelectListItem
+        {
+            Text = "Brown",
+            Value = "Brown"
+        });
+    listItems.Add(new SelectListItem
+        {
+            Text = "Orange",
+            Value = "Orange"
+        });
+}
+
 @model RecipeBox.Models.Recipe
 
 <h4>Add A New Recipe</h4>
@@ -12,6 +58,8 @@
 
   @Html.Label("Description")
   @Html.TextBoxFor(model => model.Description)
+
+  @Html.DropDownListFor(model => model.Color, listItems, "-- Select Color --")
 
   @Html.Label("Select category")
   @Html.DropDownList("CategoryId")
