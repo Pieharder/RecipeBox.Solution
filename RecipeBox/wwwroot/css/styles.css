@@ -1,3 +1,21 @@
 body {
-  background-color: rgb(219, 241, 255);
+  background-color: rgb(240, 249, 255);
+}
+
+.link, .link:hover {
+  text-decoration: none !important;
+}
+
+.link {
+  color: #888;
+}
+
+.link:hover {
+  color: #000;
+  background-color: transparent;
+}
+
+.navRight {
+  display: flex;
+  flex-direction: row;
 }
