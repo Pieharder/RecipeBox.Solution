@@ -14,9 +14,9 @@
 
 @foreach (Category category in Model)
 {
-  <li>@Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId })</li>
+  <li>@Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId }, new {@class = "content"})</li>
 }
 
-<p>@Html.ActionLink("Add new category", "Create")</p>
+<p>@Html.ActionLink("Add new category", "Create", "Categories", null, new { @class = "btn btn-dark brn-large"})</p>
 
-<p>@Html.ActionLink("Home", "Index", "Home", null,  new { @class = "btn btn-primary btn-large" } )</p>
+<p>@Html.ActionLink("Home", "Index", "Home", null,  new { @class = "btn btn-dark btn-large" } )</p>

@@ -19,3 +19,12 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.content {
+  color: #000;
+}
+
+.content:hover {
+  color: #888;
+  background-color: transparent;
+}
