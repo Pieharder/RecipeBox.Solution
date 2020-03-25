@@ -15,13 +15,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/Categories">Categories</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/Account/Register">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/Account/Login">Log in</a>
-      </li>
-      <div class="form-inline my-2 my-lg-0">
+      @if(!User.Identity.IsAuthenticated)
+      {
+        <li class="nav-item">
+          <a class="nav-link" href="/Account/Register">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Account/Login">Log in</a>
+        </li>
+      }
+      @* <div class="form-inline my-2 my-lg-0">
         <form>
           @using (Html.BeginForm("search","Categories")) 
           {
@@ -29,17 +32,30 @@
             <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-0">
           }
         </form>
-      </div>
-      @if(User.Identity.IsAuthenticated)//user is signed in
-      {
-        <li class="nav-item navRight">
-          <p>Hello @User.Identity.Name</p>
-          @using (Html.BeginForm("LogOff", "Account"))
-          {
-            <input type="submit" value="Log Out" class= "btn btn-link link">
-          }
-        </li>
-      }
+      </div> *@
     </ul>
+    @if(User.Identity.IsAuthenticated)//user is signed in
+    {
+      <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item">
+            @using (Html.BeginForm("LogOff", "Account"))
+            {
+              <input type="submit" value="Log Out" class= "btn btn-link link">
+            }
+          <li class="nav-item">
+            <p class="btn btn-link content">Hello @User.Identity.Name</p>
+          </li>
+          </li>
+      </ul>
+    }
   </div>
+</nav>
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline ml-auto">
+       @using (Html.BeginForm("search","Categories")) 
+          {
+            @Html.TextBox("Search", null, new {@class="form-control mr-sm-2"})
+            <input type="submit" value="Search" class="btn btn-outline-dark my-2 my-sm-0">
+          }
+  </form>
 </nav>
