@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using RecipeBox.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace RecipeBox.Controllers
 {
@@ -21,12 +23,14 @@ namespace RecipeBox.Controllers
       return View(_db.Categories.ToList());
     }
 
+    [Authorize]
     public ActionResult Create()
     {
       ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
       return View();
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult Create(Category category, int RecipeId)
     {
@@ -48,6 +52,7 @@ namespace RecipeBox.Controllers
       return View(thisCategory);
     }
 
+    [Authorize]
     public ActionResult Edit(int id)
     {
       Category thisCategory = _db.Categories.FirstOrDefault(category => category.CategoryId == id);
@@ -55,6 +60,7 @@ namespace RecipeBox.Controllers
       return View(thisCategory);
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult Edit(Category category, int RecipeId)
     {
@@ -67,6 +73,7 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize]
     public ActionResult AddRecipe(int id)
     {
       Category thisCategory = _db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
@@ -74,6 +81,7 @@ namespace RecipeBox.Controllers
       return View(thisCategory);
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult AddRecipe(Category category, int RecipeId)
     {
@@ -85,21 +93,14 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Index");
     }
 
-    // public ActionResult Delete(int id)
-    // {
-    //   Category thisCategory = _db.Categories.FirstOrDefault(patient => patient.CategoryId == id);
-    //   return View(thisCategory);
-    // }
+    [Authorize]
     public ActionResult Delete(int id)
     {
       var thisCategory = _db.Categories.FirstOrDefault(category => category.CategoryId == id);
       return View(thisCategory);
-      // var joinEntry = _db.CategoryRecipe.FirstOrDefault(entry => entry.CategoryRecipeId == id);
-      // _db.CategoryRecipe.Remove(joinEntry);
-      // _db.SaveChanges();
-      // return RedirectToAction("Index");
     }
     
+    [Authorize]
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
@@ -107,17 +108,9 @@ namespace RecipeBox.Controllers
       _db.Categories.Remove(thisCategory);
       _db.SaveChanges();
       return RedirectToAction("Index");
-      // Category thisCategory = _db.Categories.FirstOrDefault(patients => patients.CategoryId == id);
-      // List<CategoryRecipe> categoryRecipes = _db.CategoryRecipe.Where(recipeCategory => recipeCategory.CategoryId == id).ToList();
-      // foreach(CategoryRecipe dp in categoryRecipes)
-      // {
-      //   _db.CategoryRecipe.Remove(dp);
-      // }
-      // _db.Categories.Remove(thisCategory);
-      // _db.SaveChanges();
-      // return RedirectToAction("Index");
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult Search(string search)
     {
