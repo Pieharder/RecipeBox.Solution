@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace RecipeBox.Controllers
 {
-  [Authorize]
+  
   public class RecipesController : Controller
   {
     private readonly RecipeBoxContext _db;
@@ -24,18 +24,18 @@ namespace RecipeBox.Controllers
     }
     public async Task<ActionResult> Index()
     {
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var currentUser = await _userManager.FindByIdAsync(userId);
-      var userRecipes = _db.Recipes.Where(entry => entry.User.Id == currentUser.Id);
-      return View(userRecipes);
+      var allRecipes = _db.Recipes.ToList();
+      return View(allRecipes);
     }
 
+    [Authorize]
     public ActionResult Create()
     {
       ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
       return View();
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult> Create(Recipe recipe, int CategoryId)
     {
@@ -60,6 +60,7 @@ namespace RecipeBox.Controllers
       return View(thisRecipe);
     }
 
+    [Authorize]
     public ActionResult Edit(int id)
     {
       var thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
@@ -67,6 +68,7 @@ namespace RecipeBox.Controllers
       return View(thisRecipe);
     }
 
+    [Authorize]
     public ActionResult AddCategory(int id)
     {
       var thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
@@ -74,6 +76,7 @@ namespace RecipeBox.Controllers
       return View(thisRecipe);
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult AddCategory(Recipe recipe, int CategoryId)
     {
@@ -85,12 +88,14 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Index");
     }
 
-       public ActionResult Delete(int id)
+    [Authorize]
+    public ActionResult Delete(int id)
     {
       var thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
       return View(thisRecipe);
     }
 
+    [Authorize]
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
@@ -100,6 +105,7 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult DeleteCategory(int joinId)
     {
