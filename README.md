@@ -2,7 +2,7 @@
 
 #### _Epicodus 2020 C#/React Cohort Recipe Box._
 
-#### By _** Jamison Cozart | Geoff Goetz | Drake Wilcox **_
+#### By _**Jamison Cozart, Geoff Goetz, Drake Wilcox | 24 March 2020**_
 
 ## Description
 
@@ -11,11 +11,19 @@ This program will allow users to signup, login, and add recipes under their acco
 ## Specifications:
 
 | Behavior | Example Input | Example Output |
-|:--------:|:-------------:|:--------------:|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+|:--------|:-------------:|:--------------:|
+| Application does not allow a user to add Categories or Recipes if they are not logged in |Click: Recipe | "Log in with your account" |
+| Application allows user to view Categories and Recipes when they are not logged in to the site | Click: Categories or Recipes | Category or Recipe Details |
+| Application allows user to create an account | Register | Login |
+| Application allows user to login in to the site | Login | Welcome "User Name."|
+| Application allows a logged in user to add a Category to the database | Add Category | Create Category Page |
+| Application allows a logged in user to add a Recipe to the database and asign a Category | Add Recipe | Create Recipe Page |
+| Application allows a logged in user to Edit a specific Category | Edit Category | Edit This Category Form |
+| Application allows a logged in user to Edit a specific Category | Edit Category | Edit This Category Form |
+| Application allows a logged in user to Edit a specific Recipe | Edit Category | Edit This Category Form |
+| Application allows a logged in user to Delete a specific Category | Delete | Are you sure you want to delete this category? |
+| Application allows a logged in user to Delete a specific Recipe | Delete | Are you sure you want to delete this Recipe? |
+| Application allows a user to Sign Out of the application | Log Out | Please Sign Up or Login | 
 
 ## Setup/Installation Requirements
 
@@ -68,22 +76,25 @@ _Add the MySQL environment variable to the System PATH. Instructions for Windows
 
 _Enter the following commands in Terminal (macOS) or PowerShell (Windows):_
 * ``cd desktop``
-* ``git clone <REPO LINK>``
+* ``git clone https://github.com/drakewilcox/RecipeBox.Solution``
+* ``cd RecipeBox.Solution``
 
 _Confirm that you have navigated to the HairSalon.Solution directory (e.g., by entering the command_ ``pwd`` _in Terminal)._
 
-_Recreate the ``<DATABASE NAME>`` database using the following MySQL commands (in Terminal on macOS or PowerShell on Windows):_
+_Change into the working directory of the project:_
+* ``cd RecipeBox``
 
-<CREATE DATABASE INFO HERE>
-
+_Run the migration command to populate your MySQL server with the Database and Tables associated with this project:_
+* ``dotnet ef database update``
 
 _Run this application by entering the following command in Terminal (macOS) or PowerShell (Windows):_
-* ``cd <PROJECT DIRECTORY>``
+* ``cd RecipeBox.Solution``
+* ``cd RecipeBox``
 * ``dotnet restore``
 * ``dotnet build``
 * ``dotnet run`` or ``dotnet watch run``
 
-_To view/edit the source code of this application, open the contents of the HairSalon.Solution directory in a text editor or IDE of your choice (e.g., to open all contents of the directory in Visual Studio Code on macOS, enter the command_ ``code .`` _in Terminal)._
+_To view/edit the source code of this application, open the contents of the ``RecipeBox.Solution`` directory in a text editor or IDE of your choice (e.g., to open all contents of the directory in Visual Studio Code on macOS, enter the command_ ``code .`` _in Terminal)._
 
 ## Technologies Used
 * _Git_
@@ -103,4 +114,4 @@ _To view/edit the source code of this application, open the contents of the Hair
 
 *This webpage is licensed under the MIT license.*
 
-Copyright (c) 2020 **_<NAME>_**
+Copyright (c) 2020 **_Jamison Cozart, Geoff Goetz, Drake Wilcox_**
