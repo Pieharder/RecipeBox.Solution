@@ -22,7 +22,7 @@ namespace RecipeBox.Controllers
       _userManager = userManager; 
       _db = db;
     }
-    public async Task<ActionResult> Index()
+    public ActionResult Index()
     {
       var allRecipes = _db.Recipes.ToList();
       return View(allRecipes);

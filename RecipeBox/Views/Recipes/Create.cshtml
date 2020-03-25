@@ -53,19 +53,26 @@
 
 @using (Html.BeginForm())
 {
-  @Html.Label("Recipe Name")
+
+  @Html.Label("Recipe Name:")
+  <br>
   @Html.TextBoxFor(model => model.Name)
-
-  @Html.Label("Description")
+  <br>
+  @Html.Label("Description:")
+  <br>
   @Html.TextBoxFor(model => model.Description)
-
+  <br>
+  @Html.Label("Color:")
+  <br>
   @Html.DropDownListFor(model => model.Color, listItems, "-- Select Color --")
-
-  @Html.Label("Select category")
+  <br>
+  @Html.Label("Select category:")
+  <br>
   @Html.DropDownList("CategoryId")
-
+  <br>
+  <br>
   <input type="submit" value="Add New Recipe" class="btn btn-dark">
 }
-
-<p>@Html.ActionLink("Show All Recipes", "Index", "Recipes", null,  new { @class = "btn btn-primary btn-large" } )</p>
+<br>
+<p>@Html.ActionLink("Show All Recipes", "Index", "Recipes", null,  new { @class = "btn btn-dark btn-large" } )</p>
 
